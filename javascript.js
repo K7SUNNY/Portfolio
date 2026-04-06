@@ -26,6 +26,98 @@ function showPersonalProjectNotice() {
   alert("It's my personal project, can't show you \u{1F605}\u{1F605}");
 }
 
+const contactEmail = 'sunnyk7rajput@gmail.com';
+const emailModal = document.getElementById('email-modal');
+const emailModalFeedback = document.getElementById('email-modal-feedback');
+
+function openEmailModal(event) {
+  if (event) {
+    event.preventDefault();
+  }
+
+  if (!emailModal) {
+    window.location.href = `mailto:${contactEmail}`;
+    return;
+  }
+
+  emailModal.classList.add('visible');
+  emailModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+  clearEmailFeedback();
+}
+
+function closeEmailModal() {
+  if (!emailModal) {
+    return;
+  }
+
+  emailModal.classList.remove('visible');
+  emailModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+  clearEmailFeedback();
+}
+
+function setEmailFeedback(message, isSuccess = true) {
+  if (!emailModalFeedback) {
+    return;
+  }
+
+  emailModalFeedback.textContent = message;
+  emailModalFeedback.classList.toggle('error', !isSuccess);
+}
+
+function clearEmailFeedback() {
+  if (!emailModalFeedback) {
+    return;
+  }
+
+  emailModalFeedback.textContent = '';
+  emailModalFeedback.classList.remove('error');
+}
+
+async function copyEmailAddress() {
+  const copied = await copyText(contactEmail);
+
+  if (copied) {
+    setEmailFeedback('Email copied. You can paste it anywhere.');
+  } else {
+    setEmailFeedback(`Copy did not work here. Use this address: ${contactEmail}`, false);
+  }
+}
+
+async function copyText(text) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch (error) {
+    // Fall back to the older copy approach below.
+  }
+
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.setAttribute('readonly', '');
+  textArea.style.position = 'fixed';
+  textArea.style.opacity = '0';
+  textArea.style.pointerEvents = 'none';
+
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  let copied = false;
+
+  try {
+    copied = document.execCommand('copy');
+  } catch (error) {
+    copied = false;
+  }
+
+  document.body.removeChild(textArea);
+  return copied;
+}
+
 // Hero animations on load
 window.addEventListener('load', () => {
   const heroContent = document.querySelector('.hero-content');
@@ -112,6 +204,12 @@ document.querySelectorAll('.project-card, .skill-tag, .btn').forEach(element => 
     // You can add haptic feedback or sound effects here
     element.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
   });
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    closeEmailModal();
+  }
 });
 
 // Initialize Lucide icons on load

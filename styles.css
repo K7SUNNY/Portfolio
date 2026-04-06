@@ -48,6 +48,10 @@ body {
   overflow-x: hidden;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 /* Container */
 .container {
   max-width: 1200px;
@@ -782,6 +786,135 @@ body {
   text-align: center;
   color: hsl(var(--muted-foreground));
   animation: fadeIn 0.8s ease-out;
+}
+
+/* Email Modal */
+.email-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 100;
+}
+
+.email-modal.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.email-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 10, 25, 0.78);
+  backdrop-filter: blur(10px);
+}
+
+.email-modal-content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 34rem);
+  padding: 2rem;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--primary) / 0.28);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-bold);
+  animation: scaleIn 0.3s ease-out;
+}
+
+.email-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 9999px;
+  background: transparent;
+  color: hsl(var(--foreground));
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.email-modal-close:hover {
+  color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+  transform: scale(1.05);
+}
+
+.email-modal-close i {
+  width: 18px;
+  height: 18px;
+}
+
+.email-modal-label {
+  color: hsl(var(--primary));
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.email-modal-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.email-modal-text {
+  color: hsl(var(--muted-foreground));
+}
+
+.email-modal-address {
+  margin-top: 1.5rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.9rem;
+  background: hsl(var(--muted));
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.email-modal-feedback {
+  min-height: 1.5rem;
+  margin-top: 0.85rem;
+  color: hsl(var(--secondary));
+  font-size: 0.95rem;
+}
+
+.email-modal-feedback.error {
+  color: #ff8a8a;
+}
+
+.email-modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.25rem;
+}
+
+.email-modal-actions .btn {
+  flex: 1 1 10rem;
+}
+
+@media (max-width: 640px) {
+  .email-modal-content {
+    padding: 1.5rem;
+  }
+
+  .email-modal-title {
+    font-size: 1.6rem;
+  }
 }
 
 /* Animations */

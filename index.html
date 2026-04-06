@@ -75,9 +75,9 @@
                 <button onclick="scrollToSection('projects')" class="btn btn-primary btn-lg">
                     View My Work
                 </button>
-                <button onclick="window.location.href='mailto:sunnyk7rajput@gmail.com'" class="btn btn-outline btn-lg">
+                <a href="mailto:sunnyk7rajput@gmail.com" onclick="openEmailModal(event)" class="btn btn-outline btn-lg">
                     Get In Touch
-                </button>
+                </a>
             </div>
             
             <div class="hero-arrow">
@@ -342,14 +342,14 @@
                         <i data-lucide="instagram"></i>
                         Instagram
                     </a>
-                    <a href="mailto:sunnyk7rajput@gmail.com" target="_blank" class="btn btn-outline btn-social">
+                    <a href="mailto:sunnyk7rajput@gmail.com" onclick="openEmailModal(event)" class="btn btn-outline btn-social">
                         <i data-lucide="mail"></i>
                         Email
                     </a>
                 </div>
 
                 <div class="contact-cta">
-                    <a href="mailto:sunnyk7rajput@gmail.com" class="btn btn-primary btn-lg btn-cta">
+                    <a href="mailto:sunnyk7rajput@gmail.com" onclick="openEmailModal(event)" class="btn btn-primary btn-lg btn-cta">
                         Send Me a Message
                     </a>
                 </div>
@@ -364,6 +364,36 @@
             </div>
         </footer>
     </section>
+
+    <div id="email-modal" class="email-modal" aria-hidden="true">
+        <div class="email-modal-backdrop" onclick="closeEmailModal()"></div>
+        <div class="email-modal-content" role="dialog" aria-modal="true" aria-labelledby="email-modal-title">
+            <button class="email-modal-close" type="button" onclick="closeEmailModal()" aria-label="Close email options">
+                <i data-lucide="x"></i>
+            </button>
+
+            <p class="email-modal-label">Contact Options</p>
+            <h3 id="email-modal-title" class="email-modal-title">Send me an email</h3>
+            <p class="email-modal-text">
+                Some browsers do not open a mail app for <code>mailto:</code>. Use any option below and you will still be able to contact me.
+            </p>
+
+            <div class="email-modal-address">sunnyk7rajput@gmail.com</div>
+            <p id="email-modal-feedback" class="email-modal-feedback" aria-live="polite"></p>
+
+            <div class="email-modal-actions">
+                <button id="copy-email-btn" class="btn btn-primary" type="button" onclick="copyEmailAddress()">
+                    Copy Email
+                </button>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sunnyk7rajput@gmail.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    Open Gmail
+                </a>
+                <a href="https://outlook.office.com/mail/deeplink/compose?to=sunnyk7rajput@gmail.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    Open Outlook
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script src="javascript.js"></script>
     <script>

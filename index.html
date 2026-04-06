@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sunny Singh - BCA Student & Developer Portfolio. Building innovative apps that solve real problems.">
+    <meta name="keywords" content="Sunny Singh, Portfolio, BCA Student, Developer, Web Developer, AI, React, TypeScript">
+    <meta name="author" content="Sunny Singh">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Sunny Singh - BCA Student & Developer Portfolio">
+    <meta property="og:description" content="Building innovative apps that solve real problems. From AI chatbots to expense trackers.">
+    <meta property="og:type" content="website">
+    
+    <title>Sunny Singh RAJPUT - BCA Student & Developer Portfolio</title>
+
+    <!-- website logo -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Website CSS -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navigation" class="nav">
+        <div class="container nav-container">
+            <button class="logo" onclick="scrollToSection('home')">Sunny</button>
+            
+            <!-- Desktop Navigation -->
+            <div class="nav-desktop">
+                <button onclick="scrollToSection('home')" class="nav-link">Home</button>
+                <button onclick="scrollToSection('projects')" class="nav-link">Projects</button>
+                <button onclick="scrollToSection('skills')" class="nav-link">Skills</button>
+                <button onclick="scrollToSection('contact')" class="nav-link">Contact</button>
+                <button onclick="scrollToSection('contact')" class="btn btn-primary">Let's Talk</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <!-- Animated Background Elements -->
+        <div class="hero-bg">
+            <div class="hero-bg-blob hero-bg-blob-1"></div>
+            <div class="hero-bg-blob hero-bg-blob-2"></div>
+            <div class="hero-bg-blob hero-bg-blob-3"></div>
+            
+            <!-- Floating Icons -->
+            <i data-lucide="sparkles" class="floating-icon floating-icon-1"></i>
+            <i data-lucide="code-2" class="floating-icon floating-icon-2"></i>
+            <i data-lucide="rocket" class="floating-icon floating-icon-3"></i>
+        </div>
+
+        <div class="container hero-content">
+            <div class="hero-badge">
+                <span class="hero-badge-text">BCA Student & Developer</span>
+            </div>
+            
+            <h1 class="hero-title">Hi, I'm Sunny</h1>
+            
+            <p class="hero-description">
+                Building innovative apps that solve real problems. From AI chatbots to expense trackers, I create experiences that matter.
+            </p>
+            
+            <div class="hero-buttons">
+                <button onclick="scrollToSection('projects')" class="btn btn-primary btn-lg">
+                    View My Work
+                </button>
+                <button onclick="window.location.href='mailto:sunnyk7rajput@gmail.com'" class="btn btn-outline btn-lg">
+                    Get In Touch
+                </button>
+            </div>
+            
+            <div class="hero-arrow">
+                <i data-lucide="arrow-down"></i>
+            </div>
+        </div>
+
+        <!-- Gradient Border Animation -->
+        <div class="hero-border-animation"></div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Check out some of my recent work</p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card" data-gradient="gradient-1">
+                    <div class="project-card-overlay"></div>
+                    <div class="project-card-border"></div>
+                    
+                    <div class="project-card-content">
+                        <div class="project-header">
+                            <h3 class="project-title">BalanceX</h3>
+                            <div class="project-icons">
+                                <button class="project-icon-btn">
+                                    <i data-lucide="github"></i>
+                                </button>
+                                <button class="project-icon-btn">
+                                    <i data-lucide="external-link" onclick="window.open('https://github.com/K7SUNNY/BalanceX', '_blank')"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <p class="project-description">
+                            A comprehensive expense tracking app for managing daily transactions and maintaining financial records with ease.
+                        </p>
+                        
+                        <div class="project-tags">
+                            <span class="tag">JAVA</span>
+                            <span class="tag">Android Studio</span>
+                            <span class="tag">Database</span>
+                        </div>
+                        <div class="divider-line"></div>
+                        <div class="project-status">
+                          <span class="status-tag">Base Completed</span>
+                          <span class="status-tag">updating daily making it better</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-gradient="gradient-2">
+                    <div class="project-card-overlay"></div>
+                    <div class="project-card-border"></div>
+                    
+                    <div class="project-card-content">
+                        <div class="project-header">
+                            <h3 class="project-title">SparkV2</h3>
+                            <div class="project-icons">
+                                <button class="project-icon-btn">
+                                    <i data-lucide="github"></i>
+                                </button>
+                                <button class="project-icon-btn">
+                                    <i data-lucide="external-link" onclick="window.open('https://sparkv2web.netlify.app/', '_blank')"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <p class="project-description">
+                            Modern AI chatbot app with premium features available for free. Built for public use with advanced conversational AI.
+                        </p>
+                        
+                        <div class="project-tags">
+                            <span class="tag">AI</span>
+                            <span class="tag">JAVA</span>
+                            <span class="tag">Android Studio</span>
+                            <span class="tag">API Integration</span>
+                        </div>
+                        <div class="divider-line"></div>
+                        <div class="project-status">
+                          <span class="status-tag">Ongoing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-gradient="gradient-3">
+                    <div class="project-card-overlay"></div>
+                    <div class="project-card-border"></div>
+                    
+                    <div class="project-card-content">
+                        <div class="project-header">
+                            <h3 class="project-title">SparkV1</h3>
+                            <div class="project-icons">
+                                <button class="project-icon-btn">
+                                    <i data-lucide="github"></i>
+                                </button>
+                                <button class="project-icon-btn">
+                                    <i data-lucide="external-link"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <p class="project-description">
+                            Personal AI chatbot assistant designed for my daily use. Features custom training and personalized responses.
+                        </p>
+                        
+                        <div class="project-tags">
+                            <span class="tag">AI</span>
+                            <span class="tag">JAVA</span>
+                            <span class="tag">Android Studio</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <div class="divider-line"></div>
+                        <div class="project-status">
+                          <span class="status-tag">It's for only me</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects-footer">
+                <p class="projects-footer-text">And many more websites and applications...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <p class="section-subtitle">Technologies I work with</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">HTML</span>
+                        <span class="skill-percentage">95%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress">
+                            <div class="skill-shimmer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">css</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress">
+                            <div class="skill-shimmer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">javascript</span>
+                        <span class="skill-percentage">60%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress">
+                            <div class="skill-shimmer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Python</span>
+                        <span class="skill-percentage">75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress">
+                            <div class="skill-shimmer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">AI/ML</span>
+                        <span class="skill-percentage">40%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress">
+                            <div class="skill-shimmer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">JAVA</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress">
+                            <div class="skill-shimmer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Database Design</span>
+                        <span class="skill-percentage">75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress">
+                            <div class="skill-shimmer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-tags">
+                <div class="skill-tag">
+                    <p class="skill-tag-text">Full Stack</p>
+                </div>
+                <div class="skill-tag">
+                    <p class="skill-tag-text">AI Integration</p>
+                </div>
+                <div class="skill-tag">
+                    <p class="skill-tag-text">UI/UX Design</p>
+                </div>
+                <div class="skill-tag">
+                    <p class="skill-tag-text">Problem Solver</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section last">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">Let's Build Something Amazing</h2>
+                
+                <p class="contact-description">
+                    Got a project in mind? Whether it's a simple website or a complex application, I'm always excited to collaborate on innovative ideas.
+                </p>
+
+                <div class="social-buttons">
+                    <a href="https://github.com/K7SUNNY" target="_blank" class="btn btn-outline btn-social">
+                        <i data-lucide="github"></i>
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/sunny-singh-0a6655341/" target="_blank" class="btn btn-outline btn-social">
+                        <i data-lucide="linkedin"></i>
+                        LinkedIn
+                    </a>
+                    <a href="https://instagram.com/rajput_sunny90" target="_blank" class="btn btn-outline btn-social">
+                        <i data-lucide="instagram"></i>
+                        Instagram
+                    </a>
+                    <a href="mailto:sunnyk7rajput@gmail.com" target="_blank" class="btn btn-outline btn-social">
+                        <i data-lucide="mail"></i>
+                        Email
+                    </a>
+                </div>
+
+                <div class="contact-cta">
+                    <a href="mailto:sunnyk7rajput@gmail.com" class="btn btn-primary btn-lg btn-cta">
+                        Send Me a Message
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p class="footer-text">
+                    © 2025 Sunny Singh RAJPUT. Built with passion and code.
+                </p>
+            </div>
+        </footer>
+    </section>
+
+    <script src="javascript.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

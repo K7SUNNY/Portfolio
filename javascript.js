@@ -22,6 +22,10 @@ function scrollToSection(id) {
   }
 }
 
+function showPersonalProjectNotice() {
+  alert("It's my personal project, can't show you \u{1F605}\u{1F605}");
+}
+
 // Hero animations on load
 window.addEventListener('load', () => {
   const heroContent = document.querySelector('.hero-content');

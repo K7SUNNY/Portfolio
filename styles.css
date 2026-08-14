@@ -175,6 +175,10 @@ body.modal-open {
   color: var(--text-primary);
 }
 
+.nav-actions{
+  align-items: center;
+}
+
 .nav-btn-connect {
   background: var(--accent-blue);
   color: white;
@@ -189,6 +193,32 @@ body.modal-open {
 .nav-btn-connect:hover {
   background: var(--accent-blue-hover);
   transform: scale(1.03);
+}
+
+.nav-btn-resume {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+.nav-btn-resume:hover {
+  color: var(--text-primary);
+  border-color: var(--border-subtle-hover);
+  background: rgba(255, 255, 255, 0.04);
+}
+.nav-btn-resume i,
+.nav-btn-resume svg {
+  width: 12px;
+  height: 12px;
 }
 
 /* Section Labels */
@@ -1207,13 +1237,15 @@ body.modal-open {
   transform: translateY(-4px);
 }
 
-.contact-link-item i {
+.contact-link-item i,
+.contact-link-item svg {
   color: var(--text-secondary);
   width: 20px;
   height: 20px;
   transition: var(--transition-fast);
 }
-.contact-link-item:hover i {
+.contact-link-item:hover i,
+.contact-link-item:hover svg {
   color: var(--accent-blue);
   transform: scale(1.1);
 }
@@ -1337,7 +1369,8 @@ body.modal-open {
   background: rgba(255, 255, 255, 0.15);
   color: var(--text-primary);
 }
-.email-modal-close i {
+.email-modal-close i,
+.email-modal-close svg {
   width: 14px;
   height: 14px;
 }
@@ -1397,7 +1430,8 @@ body.modal-open {
   color: var(--accent-blue-hover);
   transform: scale(1.1);
 }
-.email-modal-address-box button i {
+.email-modal-address-box button i,
+.email-modal-address-box button svg {
   width: 16px;
   height: 16px;
 }

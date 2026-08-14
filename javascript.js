@@ -1,218 +1,306 @@
-// Navigation scroll effect
-const nav = document.getElementById('navigation');
-let lastScroll = 0;
-
+// Navigation Scroll Effect
+const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
-  
-  if (currentScroll > 50) {
-    nav.classList.add('scrolled');
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
   } else {
-    nav.classList.remove('scrolled');
+    navbar.classList.remove('scrolled');
   }
-  
-  lastScroll = currentScroll;
 });
 
-// Smooth scroll function
+// Smooth Scroll to Section
 function scrollToSection(id) {
   const element = document.getElementById(id);
   if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
+    const navbarHeight = 52; // Header offset
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - navbarHeight;
+    
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
   }
 }
 
-function showPersonalProjectNotice() {
-  alert("It's my personal project, can't show you \u{1F605}\u{1F605}");
+// Experience Spec Timeline Accordion (Only one active at a time)
+function toggleSpec(id) {
+  const selectedCard = document.getElementById(id);
+  const allCards = document.querySelectorAll('.spec-card');
+  
+  const wasActive = selectedCard.classList.contains('active');
+  
+  // Close all cards
+  allCards.forEach(card => {
+    card.classList.remove('active');
+  });
+  
+  // If the clicked card wasn't active, activate it
+  if (!wasActive) {
+    selectedCard.classList.add('active');
+  }
 }
 
-const contactEmail = 'sunnyk7rajput@gmail.com';
+// Spark AI Console Simulator Logic
+const simOutput = document.getElementById('sim-output');
+const simTypingText = document.getElementById('sim-typing-text');
+let typingInterval = null;
+
+const responses = {
+  experience: `[SISWIT Pvt. Ltd.] January 2026 - Present
+- Position: Frontend & Full-Stack Developer & Team Lead
+- Responsibilities: Developing CRM/ERP SaaS modules, Supabase Auth, PostgreSQL RLS policies, Razorpay billing systems, and leading a team of 4 developers.
+[Impact College, Patna] 2024 - 2027
+- Degree: Bachelor of Computer Applications (BCA) - 2nd Year
+- Performance: 7.04 / 10 CGPA`,
+  
+  skills: `[Languages] JavaScript, TypeScript, Java, SQL, Python, HTML/CSS
+[Frontend] React 19, Vite, Tailwind CSS, Vanilla JS
+[Backend] Supabase (Auth, RLS), PostgreSQL, Firebase, Firestore, REST APIs
+[AI/ML] OpenRouter, Mistral, n8n, local llama.cpp, GGUF inference
+[Payments] Razorpay subscription lifecycles, billing flows
+[DevOps] Git, GitHub, Netlify, offline Android dev`,
+  
+  projects: `1. Spark - AI Assistant (React, Tailwind, Firebase, OpenRouter, Mistral)
+   - Live AI conversational assistant with persistent history.
+2. Nex - Offline AI (Android, Java, llama.cpp, GGUF, TinyLlama)
+   - Running lightweight models on-device without cloud dependecies.
+3. Visuals by Pritam (React 19, TypeScript, Supabase)
+   - Video editor portfolio featuring custom 49MB video encoder.
+4. BalanceX (Android, SQLite)
+   - Accounting ledger utility for daily transactions.`,
+  
+  'team-lead': `[Leadership & Governance] Development Team Lead at SISWIT
+- Manage task delegation, deadlines, and features for 4 developers.
+- Conduct strict code reviews and maintain clean, testable system code.
+- Bridge client requirements with technical database schema implementation.
+- Mentor junior engineers in React, Supabase, and Postgres debug processes.`
+};
+
+function triggerSimulator(command) {
+  // Clear any existing typing interval
+  if (typingInterval) {
+    clearInterval(typingInterval);
+  }
+  
+  simTypingText.textContent = '';
+  const commandStr = `sunny-portfolio --${command}`;
+  let index = 0;
+  
+  // Disable buttons during typing
+  setSimButtonsState(true);
+  
+  typingInterval = setInterval(() => {
+    if (index < commandStr.length) {
+      simTypingText.textContent += commandStr.charAt(index);
+      index++;
+      scrollSimulator();
+    } else {
+      clearInterval(typingInterval);
+      typingInterval = null;
+      
+      // Append the command line and response output to simulator logs
+      setTimeout(() => {
+        appendSimLogs(commandStr, responses[command]);
+        simTypingText.textContent = '';
+        setSimButtonsState(false);
+      }, 300);
+    }
+  }, 35);
+}
+
+function appendSimLogs(cmd, responseText) {
+  const cmdLine = document.createElement('div');
+  cmdLine.className = 'line-command';
+  cmdLine.textContent = cmd;
+  
+  const respLine = document.createElement('div');
+  respLine.className = 'line-response';
+  respLine.textContent = responseText;
+  
+  simOutput.appendChild(cmdLine);
+  simOutput.appendChild(respLine);
+  
+  scrollSimulator();
+}
+
+function scrollSimulator() {
+  simOutput.parentElement.scrollTop = simOutput.parentElement.scrollHeight;
+}
+
+function setSimButtonsState(disabled) {
+  const buttons = document.querySelectorAll('.sim-btn');
+  buttons.forEach(btn => {
+    btn.disabled = disabled;
+    btn.style.opacity = disabled ? '0.5' : '1';
+    btn.style.pointerEvents = disabled ? 'none' : 'auto';
+  });
+}
+
+// Skills Filter Matrix Logic
+let activeFilter = null;
+
+function toggleSkillFilter(skillName) {
+  const allChips = document.querySelectorAll('.skill-chip');
+  const allCards = document.querySelectorAll('.bento-card');
+  
+  let chipClicked = null;
+  allChips.forEach(chip => {
+    if (chip.textContent.toLowerCase().includes(skillName.toLowerCase()) || 
+        (skillName === 'tailwind-css' && chip.textContent.toLowerCase().includes('tailwind')) ||
+        (skillName === 'llama.cpp' && chip.textContent.toLowerCase().includes('llama')) ||
+        (skillName === 'saas' && chip.textContent.toLowerCase().includes('multi-tenant')) ||
+        (skillName === 'role-based-access' && chip.textContent.toLowerCase().includes('role-based'))) {
+      chipClicked = chip;
+    }
+  });
+
+  if (!chipClicked) return;
+  
+  const isAlreadyActive = chipClicked.classList.contains('active');
+  
+  // Reset all chips
+  allChips.forEach(chip => chip.classList.remove('active'));
+  
+  if (isAlreadyActive) {
+    // Disable filter
+    activeFilter = null;
+    allCards.forEach(card => {
+      card.classList.remove('dimmed');
+      card.classList.remove('highlighted');
+    });
+  } else {
+    // Enable filter
+    chipClicked.classList.add('active');
+    activeFilter = skillName;
+    
+    allCards.forEach(card => {
+      const cardTags = card.getAttribute('data-tags') || '';
+      if (cardTags.includes(skillName)) {
+        card.classList.remove('dimmed');
+        card.classList.add('highlighted');
+      } else {
+        card.classList.add('dimmed');
+        card.classList.remove('highlighted');
+      }
+    });
+  }
+}
+
+// macOS macOS Style Modal logic
 const emailModal = document.getElementById('email-modal');
-const emailModalFeedback = document.getElementById('email-modal-feedback');
+const emailFeedback = document.getElementById('email-modal-feedback');
+const contactEmail = 'sunnyk7rajput@gmail.com';
 
 function openEmailModal(event) {
   if (event) {
     event.preventDefault();
   }
-
-  if (!emailModal) {
-    window.location.href = `mailto:${contactEmail}`;
-    return;
-  }
-
+  
   emailModal.classList.add('visible');
   emailModal.setAttribute('aria-hidden', 'false');
   document.body.classList.add('modal-open');
-  clearEmailFeedback();
+  if (emailFeedback) {
+    emailFeedback.textContent = '';
+  }
 }
 
 function closeEmailModal() {
-  if (!emailModal) {
-    return;
-  }
-
   emailModal.classList.remove('visible');
   emailModal.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('modal-open');
-  clearEmailFeedback();
-}
-
-function setEmailFeedback(message, isSuccess = true) {
-  if (!emailModalFeedback) {
-    return;
-  }
-
-  emailModalFeedback.textContent = message;
-  emailModalFeedback.classList.toggle('error', !isSuccess);
-}
-
-function clearEmailFeedback() {
-  if (!emailModalFeedback) {
-    return;
-  }
-
-  emailModalFeedback.textContent = '';
-  emailModalFeedback.classList.remove('error');
 }
 
 async function copyEmailAddress() {
-  const copied = await copyText(contactEmail);
-
-  if (copied) {
-    setEmailFeedback('Email copied. You can paste it anywhere.');
-  } else {
-    setEmailFeedback(`Copy did not work here. Use this address: ${contactEmail}`, false);
-  }
-}
-
-async function copyText(text) {
   try {
     if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(text);
-      return true;
+      await navigator.clipboard.writeText(contactEmail);
+      showFeedback('Address copied successfully!');
+      return;
     }
-  } catch (error) {
-    // Fall back to the older copy approach below.
+  } catch (err) {
+    // Fall back
   }
-
+  
+  // Fall back select method
   const textArea = document.createElement('textarea');
-  textArea.value = text;
-  textArea.setAttribute('readonly', '');
+  textArea.value = contactEmail;
   textArea.style.position = 'fixed';
   textArea.style.opacity = '0';
-  textArea.style.pointerEvents = 'none';
-
   document.body.appendChild(textArea);
   textArea.focus();
   textArea.select();
-
-  let copied = false;
-
+  
   try {
-    copied = document.execCommand('copy');
-  } catch (error) {
-    copied = false;
+    const success = document.execCommand('copy');
+    if (success) {
+      showFeedback('Address copied successfully!');
+    } else {
+      showFeedback('Copy failed. Manual copy: ' + contactEmail);
+    }
+  } catch (err) {
+    showFeedback('Copy failed. Manual copy: ' + contactEmail);
   }
-
   document.body.removeChild(textArea);
-  return copied;
 }
 
-// Hero animations on load
-window.addEventListener('load', () => {
-  const heroContent = document.querySelector('.hero-content');
-  if (heroContent) {
-    heroContent.style.opacity = '1';
+function showFeedback(msg) {
+  if (emailFeedback) {
+    emailFeedback.textContent = msg;
+    setTimeout(() => {
+      if (emailFeedback.textContent === msg) {
+        emailFeedback.textContent = '';
+      }
+    }, 3000);
   }
-});
-
-// Intersection Observer for Projects
-const projectObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const cards = document.querySelectorAll('.project-card');
-      cards.forEach((card, index) => {
-        setTimeout(() => {
-          card.classList.add('visible');
-        }, index * 150);
-      });
-      projectObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-const projectsSection = document.getElementById('projects');
-if (projectsSection) {
-  projectObserver.observe(projectsSection);
 }
 
-// Intersection Observer for Skills (Updated to Auto-Parse Percentage from Span)
-const skillObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const skills = document.querySelectorAll('.skill-item');
-      skills.forEach((skill, index) => {
-        setTimeout(() => {
-          skill.classList.add('visible');
-          
-          // Animate progress bar after element is visible - Auto-parses from .skill-percentage text
-          setTimeout(() => {
-            const percentageText = skill.querySelector('.skill-percentage').textContent;
-            const level = percentageText.replace('%', '').trim(); // e.g., "95" from "95%"
-            skill.classList.add('animated');
-            skill.style.setProperty('--skill-width', `${level}%`);
-          }, 200);
-        }, index * 100);
-      });
-      skillObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-const skillsSection = document.getElementById('skills');
-if (skillsSection) {
-  skillObserver.observe(skillsSection);
-}
-
-// Add staggered animation to contact social buttons
-window.addEventListener('load', () => {
-  const socialButtons = document.querySelectorAll('.btn-social');
-  socialButtons.forEach((button, index) => {
-    button.style.animation = `scaleIn 0.5s ease-out ${index * 0.1}s backwards`;
-  });
-  
-  const skillTags = document.querySelectorAll('.skill-tag');
-  skillTags.forEach((tag, index) => {
-    tag.style.animationDelay = `${index * 0.1}s`;
-  });
-});
-
-// Parallax effect for hero background
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  const heroBlobs = document.querySelectorAll('.hero-bg-blob');
-  
-  heroBlobs.forEach((blob, index) => {
-    const speed = 0.5 + (index * 0.1);
-    blob.style.transform = `translateY(${scrolled * speed}px)`;
-  });
-});
-
-// Add hover effect sound/feedback (optional enhancement)
-document.querySelectorAll('.project-card, .skill-tag, .btn').forEach(element => {
-  element.addEventListener('mouseenter', () => {
-    // You can add haptic feedback or sound effects here
-    element.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-  });
-});
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
+// Key listener to close modal on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
     closeEmailModal();
   }
 });
 
-// Initialize Lucide icons on load
+// High performance intersection observer for animation trigger
 document.addEventListener('DOMContentLoaded', () => {
-  lucide.createIcons();
+  const revealElements = [
+    document.querySelector('.about-header-block'),
+    ...document.querySelectorAll('.stat-card'),
+    document.querySelector('.experience-sticky-info'),
+    ...document.querySelectorAll('.spec-card'),
+    document.querySelector('.projects-header-centered'),
+    ...document.querySelectorAll('.bento-card'),
+    document.querySelector('.skills-header-centered'),
+    ...document.querySelectorAll('.skill-category-card'),
+    document.querySelector('.contact-box'),
+    ...document.querySelectorAll('.contact-link-item')
+  ];
+  
+  revealElements.forEach(el => {
+    if (el) {
+      el.classList.add('reveal-init');
+    }
+  });
+
+  const observerOptions = {
+    root: null,
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  revealElements.forEach(el => {
+    if (el) {
+      revealObserver.observe(el);
+    }
+  });
 });

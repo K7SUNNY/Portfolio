@@ -3,401 +3,545 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sunny Singh - BCA Student & Developer Portfolio. Building innovative apps that solve real problems.">
-    <meta name="keywords" content="Sunny Singh, Portfolio, BCA Student, Developer, Web Developer, AI, React, TypeScript">
+    <meta name="description" content="Sunny Singh - Full-Stack Developer & Team Lead. Designing SaaS platforms, web applications, and conversational AI systems.">
+    <meta name="keywords" content="Sunny Singh, Full-Stack Developer, Team Lead, SaaS Architecture, AI Assistant, React, Supabase, PostgreSQL">
     <meta name="author" content="Sunny Singh">
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Sunny Singh - BCA Student & Developer Portfolio">
-    <meta property="og:description" content="Building innovative apps that solve real problems. From AI chatbots to expense trackers.">
+    <!-- Open Graph / Meta -->
+    <meta property="og:title" content="Sunny Singh | Full-Stack Developer & Team Lead">
+    <meta property="og:description" content="Designing enterprise SaaS modules, offline-first AI applications, and custom web systems.">
     <meta property="og:type" content="website">
     
-    <title>Sunny Singh RAJPUT - BCA Student & Developer Portfolio</title>
+    <title>Sunny Singh | Full-Stack Developer & Team Lead</title>
 
-    <!-- website logo -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
     
-    <!-- Google Fonts -->
+    <!-- Fonts (Space Grotesk & Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Website CSS -->
+    <!-- Unified CSS -->
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navigation" class="nav">
-        <div class="container nav-container">
-            <button class="logo" onclick="scrollToSection('home')">Sunny</button>
+
+    <!-- Header / Navigation (Apple Glassmorphism Style) -->
+    <header id="navbar" class="nav-bar">
+        <div class="nav-container">
+            <button class="nav-logo" onclick="scrollToSection('hero')">Sunny Singh</button>
             
-            <!-- Desktop Navigation -->
-            <div class="nav-desktop">
-                <button onclick="scrollToSection('home')" class="nav-link">Home</button>
+            <nav class="nav-links">
+                <button onclick="scrollToSection('about')" class="nav-link">About</button>
+                <button onclick="scrollToSection('experience')" class="nav-link">Experience</button>
                 <button onclick="scrollToSection('projects')" class="nav-link">Projects</button>
                 <button onclick="scrollToSection('skills')" class="nav-link">Skills</button>
-                <button onclick="scrollToSection('contact')" class="nav-link">Contact</button>
-                <button onclick="scrollToSection('contact')" class="btn btn-primary">Let's Talk</button>
+            </nav>
+            
+            <div class="nav-actions">
+                <button onclick="openEmailModal(event)" class="nav-btn-connect">Let's Connect</button>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <!-- Animated Background Elements -->
-        <div class="hero-bg">
-            <div class="hero-bg-blob hero-bg-blob-1"></div>
-            <div class="hero-bg-blob hero-bg-blob-2"></div>
-            <div class="hero-bg-blob hero-bg-blob-3"></div>
-            
-            <!-- Floating Icons -->
-            <i data-lucide="sparkles" class="floating-icon floating-icon-1"></i>
-            <i data-lucide="code-2" class="floating-icon floating-icon-2"></i>
-            <i data-lucide="rocket" class="floating-icon floating-icon-3"></i>
+    <!-- Hero Section (Apple Minimalist Copy + Interactive Spark AI Simulator) -->
+    <section id="hero" class="hero-section">
+        <div class="hero-glow-layer">
+            <div class="hero-glow-blob blob-1"></div>
+            <div class="hero-glow-blob blob-2"></div>
         </div>
-
-        <div class="container hero-content">
-            <div class="hero-badge">
-                <span class="hero-badge-text">BCA Student & Developer</span>
-            </div>
+        
+        <div class="hero-content container">
+            <!-- <div class="hero-badge">
+                <span class="badge-dot"></span> Available for Full-Stack Opportunities
+            </div> -->
             
-            <h1 class="hero-title">Hi, I'm Sunny</h1>
-            
-            <p class="hero-description">
-                Building innovative apps that solve real problems. From AI chatbots to expense trackers, I create experiences that matter.
+            <h1 class="hero-title">I design systems that scale and experiences that matter.</h1>
+            <p class="hero-subtitle">
+                Full-Stack Developer & Team Lead specializing in enterprise SaaS, custom API integrations, and robust database architectures. Currently driving development at SISWIT Pvt. Ltd.
             </p>
             
-            <div class="hero-buttons">
-                <button onclick="scrollToSection('projects')" class="btn btn-primary btn-lg">
-                    View My Work
-                </button>
-                <a href="mailto:sunnyk7rajput@gmail.com" onclick="openEmailModal(event)" class="btn btn-outline btn-lg">
-                    Get In Touch
+            <div class="hero-cta-group">
+                <button onclick="scrollToSection('projects')" class="btn-apple-primary">Explore My Work</button>
+                <button onclick="openEmailModal(event)" class="btn-apple-secondary">Get in Touch <i data-lucide="arrow-right"></i></button>
+            </div>
+            
+            <!-- Spark AI Simulator (Interactive Console UI) -->
+            <div class="simulator-container">
+                <div class="simulator-header">
+                    <div class="window-controls">
+                        <span class="dot-red"></span>
+                        <span class="dot-yellow"></span>
+                        <span class="dot-green"></span>
+                    </div>
+                    <div class="window-title">spark-ai-assistant --live-demo</div>
+                    <div class="window-spacer"></div>
+                </div>
+                <div class="simulator-body">
+                    <div class="simulator-output" id="sim-output">
+                        <div class="line-comment">// Welcome to Spark AI Simulator. Choose a query below to explore.</div>
+                        <div class="line-command">sunny-portfolio --help</div>
+                        <div class="line-response">Available options: --experience, --skills, --philosophy, --contact</div>
+                    </div>
+                    <div class="simulator-input-line">
+                        <span class="prompt-symbol">$</span>
+                        <span id="sim-typing-text" class="typing-text"></span>
+                        <span class="cursor">_</span>
+                    </div>
+                </div>
+                <div class="simulator-controls">
+                    <button class="sim-btn" onclick="triggerSimulator('experience')">--experience</button>
+                    <button class="sim-btn" onclick="triggerSimulator('skills')">--skills</button>
+                    <button class="sim-btn" onclick="triggerSimulator('projects')">--projects</button>
+                    <button class="sim-btn" onclick="triggerSimulator('team-lead')">--leadership</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-scroll-indicator" onclick="scrollToSection('about')">
+            <span>Scroll to discover</span>
+            <i data-lucide="chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Editorial About Section -->
+    <section id="about" class="about-section">
+        <div class="container grid-2">
+            <div class="about-header-block">
+                <h2 class="section-title-large">Design. Code. Orchestrate.</h2>
+                <p class="about-lead">
+                    Translating high-level business goals into robust, high-performance software. Focused on efficiency, clean code practices, and intelligent user interaction.
+                </p>
+            </div>
+            <div class="about-stats-grid">
+                <div class="stat-card">
+                    <span class="stat-num">4</span>
+                    <span class="stat-label">Developers Mentored & Led</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">5+</span>
+                    <span class="stat-label">Production SaaS Modules Built</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">7.04</span>
+                    <span class="stat-label">BCA CGPA (Impact College)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Commitment to Clean Architecture</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience Section (Apple Accordion Specification Style) -->
+    <section id="experience" class="experience-section">
+        <div class="container grid-experience">
+            <div class="experience-sticky-info">
+                <span class="section-label">Professional Timeline</span>
+                <h2 class="section-title">Career Specs.</h2>
+                <p class="section-desc">
+                    A timeline of technical leadership, full-stack implementation, and academic progress. Click on any block to expand the specifications.
+                </p>
+            </div>
+            
+            <div class="experience-list">
+                <!-- SISWIT Job -->
+                <div class="spec-card active" id="spec-siswit">
+                    <div class="spec-header" onclick="toggleSpec('spec-siswit')">
+                        <div class="spec-title-group">
+                            <span class="spec-date">Jan 2026 – Present</span>
+                            <h3 class="spec-role">Frontend / Full-Stack Developer & Team Lead</h3>
+                            <span class="spec-company">SISWIT Pvt. Ltd. | Patna, India</span>
+                        </div>
+                        <div class="spec-icon-wrapper">
+                            <i data-lucide="plus" class="icon-expand"></i>
+                        </div>
+                    </div>
+                    <div class="spec-content">
+                        <ul class="spec-bullets">
+                            <li><strong>SaaS Management</strong>: Develop and maintain multi-module SaaS platforms containing CRM, CPQ, CLM, ERP, documentation, and resource controls.</li>
+                            <li><strong>E2E Engineering</strong>: Drive software lifecycle including relational schema design, secure API integrations, security policies, and production deployments.</li>
+                            <li><strong>Billing Pipelines</strong>: Built trial lifecycles, service controls, and payment routing using Razorpay infrastructure.</li>
+                            <li><strong>Leadership</strong>: Guide a team of 4 developers. Assign features, orchestrate deadlines, perform code reviews, troubleshoot blockers, and coordinate directly with management.</li>
+                        </ul>
+                        <div class="spec-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Razorpay</span>
+                            <span class="tech-tag">Netlify</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Impact College -->
+                <div class="spec-card" id="spec-college">
+                    <div class="spec-header" onclick="toggleSpec('spec-college')">
+                        <div class="spec-title-group">
+                            <span class="spec-date">2024 – 2027</span>
+                            <h3 class="spec-role">Bachelor of Computer Applications (BCA)</h3>
+                            <span class="spec-company">Impact College | Patna, Bihar (2nd Year)</span>
+                        </div>
+                        <div class="spec-icon-wrapper">
+                            <i data-lucide="plus" class="icon-expand"></i>
+                        </div>
+                    </div>
+                    <div class="spec-content">
+                        <ul class="spec-bullets">
+                            <li><strong>Academic Focus</strong>: Data structures, database management systems (DBMS), software engineering practices, and OOP.</li>
+                            <li><strong>Grades achieved</strong>: Maintained a strong GPA of 7.04/10 over the course of studies.</li>
+                            <li><strong>Practical integration</strong>: Implementing real-world class projects using Java, SQL, and web development technologies.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Secondary School -->
+                <div class="spec-card" id="spec-school">
+                    <div class="spec-header" onclick="toggleSpec('spec-school')">
+                        <div class="spec-title-group">
+                            <span class="spec-date">Graduated 2024 & 2022</span>
+                            <h3 class="spec-role">Secondary & Higher Secondary Education</h3>
+                            <span class="spec-company">Holy Christ Secondary School | Dankuni</span>
+                        </div>
+                        <div class="spec-icon-wrapper">
+                            <i data-lucide="plus" class="icon-expand"></i>
+                        </div>
+                    </div>
+                    <div class="spec-content">
+                        <ul class="spec-bullets">
+                            <li><strong>ISC (Commerce)</strong>: Graduated in 2024 with a commerce concentration, developing foundational economics and accounting insights.</li>
+                            <li><strong>ICSE (Science)</strong>: Graduated in 2022 with a focus on scientific concepts, mathematics, and computers.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selected Projects Section (Bento Grid) -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="projects-header-centered">
+                <span class="section-label">Selected Portfolio</span>
+                <h2 class="section-title">Crafted Implementations.</h2>
+                <p class="section-desc">
+                    Click on a tech chip in the skills section to highlight matching projects.
+                </p>
+            </div>
+            
+            <!-- Bento Grid Layout -->
+            <div class="bento-grid">
+                <!-- Spark Card (Large 2x1) -->
+                <div class="bento-card col-span-2" data-tags="react tailwind-css firebase openrouter mistral ai html css javascript">
+                    <div class="bento-gradient-bg bg-spark"></div>
+                    <div class="bento-card-content">
+                        <div class="bento-header">
+                            <span class="bento-tag"><i data-lucide="sparkles"></i> AI Integration</span>
+                            <a href="https://sparkv2web.netlify.app/" target="_blank" class="bento-link-btn" aria-label="Visit Spark V2 Live Site"><i data-lucide="arrow-up-right"></i></a>
+                        </div>
+                        <div class="bento-body">
+                            <h3 class="bento-title">Spark AI Assistant</h3>
+                            <p class="bento-text">
+                                A web conversational interface built with React and Tailwind CSS. Connects to LLMs via OpenRouter and Mistral API with persistent chat states and history records using Firebase/Firestore. Used actively within personal and professional networks.
+                            </p>
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-tech-chips">
+                                <span>React</span>
+                                <span>Tailwind CSS</span>
+                                <span>Firebase</span>
+                                <span>OpenRouter</span>
+                                <span>Mistral API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nex Card (1x1) -->
+                <div class="bento-card" data-tags="android java llama.cpp gguf tinyllama ai">
+                    <div class="bento-gradient-bg bg-nex"></div>
+                    <div class="bento-card-content">
+                        <div class="bento-header">
+                            <span class="bento-tag"><i data-lucide="cpu"></i> Edge AI</span>
+                        </div>
+                        <div class="bento-body">
+                            <h3 class="bento-title">Nex: Offline AI</h3>
+                            <p class="bento-text">
+                                Exploring local machine learning inference directly on Android using java bindings, llama.cpp, and GGUF-wrapped lightweight models like TinyLlama 1.1B. Formulated to ensure zero server latency and offline confidentiality.
+                            </p>
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-tech-chips">
+                                <span>Android</span>
+                                <span>Java</span>
+                                <span>llama.cpp</span>
+                                <span>GGUF</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visuals by Pritam Card (1x1) -->
+                <div class="bento-card" data-tags="react typescript vite tailwind-css supabase postgresql html css javascript">
+                    <div class="bento-gradient-bg bg-pritam"></div>
+                    <div class="bento-card-content">
+                        <div class="bento-header">
+                            <span class="bento-tag"><i data-lucide="video"></i> Video Platform</span>
+                            <a href="https://visualsbypritam.netlify.app/" target="_blank" class="bento-link-btn" aria-label="Visit Visuals by Pritam Live Site"><i data-lucide="arrow-up-right"></i></a>
+                        </div>
+                        <div class="bento-body">
+                            <h3 class="bento-title">Visuals by Pritam</h3>
+                            <p class="bento-text">
+                                Tailored portfolio web hub built using React 19 and TypeScript, using Supabase for media storage and administration dashboard. Integrates a custom serverless video encoder rendering high-fidelity outputs optimized under 49MB thresholds.
+                            </p>
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-tech-chips">
+                                <span>React 19</span>
+                                <span>TypeScript</span>
+                                <span>Vite</span>
+                                <span>Supabase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BalanceX Card (1x1) -->
+                <div class="bento-card" data-tags="android java SQL">
+                    <div class="bento-gradient-bg bg-balancex"></div>
+                    <div class="bento-card-content">
+                        <div class="bento-header">
+                            <span class="bento-tag"><i data-lucide="wallet"></i> Accounting Utility</span>
+                            <a href="https://github.com/K7SUNNY/BalanceX" target="_blank" class="bento-link-btn" aria-label="Visit BalanceX GitHub Repository"><i data-lucide="arrow-up-right"></i></a>
+                        </div>
+                        <div class="bento-body">
+                            <h3 class="bento-title">BalanceX</h3>
+                            <p class="bento-text">
+                                A standalone Android accounting system facilitating offline cash flow ledger management, transaction graphing, and structural export reports. Active development lifecycle maintained with local SQLite engines.
+                            </p>
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-tech-chips">
+                                <span>Android</span>
+                                <span>Java</span>
+                                <span>SQLite</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shivam Engineering Card (1x1) -->
+                <div class="bento-card" data-tags="html css javascript web-development">
+                    <div class="bento-gradient-bg bg-shivam"></div>
+                    <div class="bento-card-content">
+                        <div class="bento-header">
+                            <span class="bento-tag"><i data-lucide="settings"></i> Client Site</span>
+                            <a href="https://shivamengineering.in/" target="_blank" class="bento-link-btn" aria-label="Visit Shivam Engineering Site"><i data-lucide="arrow-up-right"></i></a>
+                        </div>
+                        <div class="bento-body">
+                            <h3 class="bento-title">Shivam Engineering</h3>
+                            <p class="bento-text">
+                                Professional digital presence built with HTML5, vanilla CSS, and vanilla JS for an engineering client. Tailored for SEO, fluid responsiveness, business query routing, and swift page rendering.
+                            </p>
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-tech-chips">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bento-bottom-note">
+                <p>Additional projects, tools, and SaaS modules accessible on <a href="https://github.com/K7SUNNY" target="_blank" class="text-glow-blue">GitHub <i data-lucide="arrow-up-right" class="icon-inline"></i></a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <div class="skills-header-centered">
+                <span class="section-label">Core Capabilities</span>
+                <h2 class="section-title">Technical Matrix.</h2>
+                <p class="section-desc">
+                    Click any skill token below to filter related projects in the bento grid above.
+                </p>
+            </div>
+            
+            <div class="skills-matrix">
+                <!-- Languages & Foundations -->
+                <div class="skill-category-card">
+                    <h3 class="category-title"><i data-lucide="code-2"></i> Languages</h3>
+                    <div class="skill-tokens">
+                        <button class="skill-chip" onclick="toggleSkillFilter('javascript')">JavaScript</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('typescript')">TypeScript</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('java')">Java</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('sql')">SQL</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('html')">HTML</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('css')">CSS</button>
+                    </div>
+                </div>
+
+                <!-- Frontend Frameworks -->
+                <div class="skill-category-card">
+                    <h3 class="category-title"><i data-lucide="layout"></i> Frontend</h3>
+                    <div class="skill-tokens">
+                        <button class="skill-chip" onclick="toggleSkillFilter('react')">React</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('typescript')">TypeScript</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('vite')">Vite</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('tailwind-css')">Tailwind CSS</button>
+                    </div>
+                </div>
+
+                <!-- Backend & Storage -->
+                <div class="skill-category-card">
+                    <h3 class="category-title"><i data-lucide="database"></i> Backend & Database</h3>
+                    <div class="skill-tokens">
+                        <button class="skill-chip" onclick="toggleSkillFilter('supabase')">Supabase</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('postgresql')">PostgreSQL</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('firebase')">Firebase</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('firestore')">Firestore</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('sql')">SQLite</button>
+                    </div>
+                </div>
+
+                <!-- AI Systems & Integrations -->
+                <div class="skill-category-card">
+                    <h3 class="category-title"><i data-lucide="cpu"></i> AI & Integrations</h3>
+                    <div class="skill-tokens">
+                        <button class="skill-chip" onclick="toggleSkillFilter('openrouter')">OpenRouter</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('mistral')">Mistral API</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('llama.cpp')">llama.cpp</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('gguf')">GGUF</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('ai')">Conversational LLMs</button>
+                    </div>
+                </div>
+
+                <!-- Payments & Architecture -->
+                <div class="skill-category-card">
+                    <h3 class="category-title"><i data-lucide="layers"></i> Systems & Payments</h3>
+                    <div class="skill-tokens">
+                        <button class="skill-chip" onclick="toggleSkillFilter('razorpay')">Razorpay Systems</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('supabase')">Supabase Auth / RLS</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('role-based-access')">Role-Based Access</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('saas')">Multi-tenant Architecture</button>
+                    </div>
+                </div>
+
+                <!-- Tools & Hostings -->
+                <div class="skill-category-card">
+                    <h3 class="category-title"><i data-lucide="terminal"></i> Tools & Operations</h3>
+                    <div class="skill-tokens">
+                        <button class="skill-chip" onclick="toggleSkillFilter('git')">Git / GitHub</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('netlify')">Netlify Deployment</button>
+                        <button class="skill-chip" onclick="toggleSkillFilter('n8n')">n8n Automation</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Call to Action & Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container contact-box">
+            <div class="contact-header">
+                <span class="section-label">Connect Today</span>
+                <h2 class="contact-title">Let's orchestrate something exceptional.</h2>
+                <p class="contact-desc">
+                    Available for team leading roles, SaaS product architecture, and general full-stack opportunities. Reach out and I will respond within one business day.
+                </p>
+            </div>
+            
+            <div class="contact-cta-wrapper">
+                <a href="mailto:sunnyk7rajput@gmail.com" onclick="openEmailModal(event)" class="btn-email-box">
+                    <span class="email-address">sunnyk7rajput@gmail.com</span>
+                    <span class="email-btn-inner"><i data-lucide="mail"></i> Message Me</span>
                 </a>
             </div>
             
-            <div class="hero-arrow">
-                <i data-lucide="arrow-down"></i>
+            <div class="contact-links-grid">
+                <a href="https://github.com/K7SUNNY" target="_blank" class="contact-link-item">
+                    <i data-lucide="github"></i>
+                    <span>GitHub</span>
+                    <span class="link-user">@K7SUNNY</span>
+                </a>
+                <a href="https://www.linkedin.com/in/sunny-singh-0a6655341/" target="_blank" class="contact-link-item">
+                    <i data-lucide="linkedin"></i>
+                    <span>LinkedIn</span>
+                    <span class="link-user">@sunny-singh</span>
+                </a>
+                <a href="https://instagram.com/rajput_sunny90" target="_blank" class="contact-link-item">
+                    <i data-lucide="instagram"></i>
+                    <span>Instagram</span>
+                    <span class="link-user">@rajput_sunny90</span>
+                </a>
+                <a href="tel:+919229804273" class="contact-link-item">
+                    <i data-lucide="phone"></i>
+                    <span>Phone</span>
+                    <span class="link-user">+91 9229804273</span>
+                </a>
             </div>
         </div>
 
-        <!-- Gradient Border Animation -->
-        <div class="hero-border-animation"></div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Check out some of my recent work</p>
-            </div>
-
-            <div class="projects-grid">
-                <div class="project-card" data-gradient="gradient-1">
-                    <div class="project-card-overlay"></div>
-                    <div class="project-card-border"></div>
-                    
-                    <div class="project-card-content">
-                        <div class="project-header">
-                            <h3 class="project-title">BalanceX</h3>
-                            <div class="project-icons">
-                                <button class="project-icon-btn">
-                                    <i data-lucide="github"></i>
-                                </button>
-                                <button class="project-icon-btn">
-                                    <i data-lucide="external-link" onclick="window.open('https://github.com/K7SUNNY/BalanceX', '_blank')"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <p class="project-description">
-                            A comprehensive expense tracking app for managing daily transactions and maintaining financial records with ease.
-                        </p>
-                        
-                        <div class="project-tags">
-                            <span class="tag">JAVA</span>
-                            <span class="tag">Android Studio</span>
-                            <span class="tag">Database</span>
-                        </div>
-                        <div class="divider-line"></div>
-                        <div class="project-status">
-                          <span class="status-tag">Base Completed</span>
-                          <span class="status-tag">updating daily making it better</span>
-                        </div>
-                    </div>
+        <!-- Footer -->
+        <footer class="footer container">
+            <div class="footer-divider"></div>
+            <div class="footer-flex">
+                <p class="footer-copyright">© 2026 Sunny Singh. All rights reserved.</p>
+                <div class="footer-links">
+                    <button onclick="scrollToSection('hero')">Back to top</button>
                 </div>
-
-                <div class="project-card" data-gradient="gradient-2">
-                    <div class="project-card-overlay"></div>
-                    <div class="project-card-border"></div>
-                    
-                    <div class="project-card-content">
-                        <div class="project-header">
-                            <h3 class="project-title">SparkV2</h3>
-                            <div class="project-icons">
-                                <button class="project-icon-btn">
-                                    <i data-lucide="github"></i>
-                                </button>
-                                <button class="project-icon-btn">
-                                    <i data-lucide="external-link" onclick="window.open('https://sparkv2web.netlify.app/', '_blank')"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <p class="project-description">
-                            Modern AI chatbot app with premium features available for free. Built for public use with advanced conversational AI.
-                        </p>
-                        
-                        <div class="project-tags">
-                            <span class="tag">AI</span>
-                            <span class="tag">JAVA</span>
-                            <span class="tag">Android Studio</span>
-                            <span class="tag">API Integration</span>
-                        </div>
-                        <div class="divider-line"></div>
-                        <div class="project-status">
-                          <span class="status-tag">Ongoing + live</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-gradient="gradient-3">
-                    <div class="project-card-overlay"></div>
-                    <div class="project-card-border"></div>
-                    
-                    <div class="project-card-content">
-                        <div class="project-header">
-                            <h3 class="project-title">SparkV1</h3>
-                            <div class="project-icons">
-                                <button class="project-icon-btn">
-                                    <i data-lucide="github"></i>
-                                </button>
-                                <button class="project-icon-btn" onclick="showPersonalProjectNotice()">
-                                    <i data-lucide="external-link"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <p class="project-description">
-                            Personal AI chatbot assistant designed for my daily use. Features custom training and personalized responses.
-                        </p>
-                        
-                        <div class="project-tags">
-                            <span class="tag">AI</span>
-                            <span class="tag">JAVA</span>
-                            <span class="tag">Android Studio</span>
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Python</span>
-                        </div>
-                        <div class="divider-line"></div>
-                        <div class="project-status">
-                          <span class="status-tag">It's for only me</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="projects-footer">
-                <p class="projects-footer-text">And many more websites and applications...</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Skills & Expertise</h2>
-                <p class="section-subtitle">Technologies I work with</p>
-            </div>
-
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">HTML</span>
-                        <span class="skill-percentage">95%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress">
-                            <div class="skill-shimmer"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">css</span>
-                        <span class="skill-percentage">90%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress">
-                            <div class="skill-shimmer"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">javascript</span>
-                        <span class="skill-percentage">60%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress">
-                            <div class="skill-shimmer"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Python</span>
-                        <span class="skill-percentage">75%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress">
-                            <div class="skill-shimmer"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">AI/ML</span>
-                        <span class="skill-percentage">40%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress">
-                            <div class="skill-shimmer"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">JAVA</span>
-                        <span class="skill-percentage">90%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress">
-                            <div class="skill-shimmer"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Database Design</span>
-                        <span class="skill-percentage">75%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress">
-                            <div class="skill-shimmer"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skill-tags">
-                <div class="skill-tag">
-                    <p class="skill-tag-text">Full Stack</p>
-                </div>
-                <div class="skill-tag">
-                    <p class="skill-tag-text">AI Integration</p>
-                </div>
-                <div class="skill-tag">
-                    <p class="skill-tag-text">UI/UX Design</p>
-                </div>
-                <div class="skill-tag">
-                    <p class="skill-tag-text">Problem Solver</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section last">
-        <div class="container">
-            <div class="contact-content">
-                <h2 class="section-title">Let's Build Something Amazing</h2>
-                
-                <p class="contact-description">
-                    Got a project in mind? Whether it's a simple website or a complex application, I'm always excited to collaborate on innovative ideas.
-                </p>
-
-                <div class="social-buttons">
-                    <a href="https://github.com/K7SUNNY" target="_blank" class="btn btn-outline btn-social">
-                        <i data-lucide="github"></i>
-                        GitHub
-                    </a>
-                    <a href="https://www.linkedin.com/in/sunny-singh-0a6655341/" target="_blank" class="btn btn-outline btn-social">
-                        <i data-lucide="linkedin"></i>
-                        LinkedIn
-                    </a>
-                    <a href="https://instagram.com/rajput_sunny90" target="_blank" class="btn btn-outline btn-social">
-                        <i data-lucide="instagram"></i>
-                        Instagram
-                    </a>
-                    <a href="mailto:sunnyk7rajput@gmail.com" onclick="openEmailModal(event)" class="btn btn-outline btn-social">
-                        <i data-lucide="mail"></i>
-                        Email
-                    </a>
-                </div>
-
-                <div class="contact-cta">
-                    <a href="mailto:sunnyk7rajput@gmail.com" onclick="openEmailModal(event)" class="btn btn-primary btn-lg btn-cta">
-                        Send Me a Message
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <footer class="footer">
-            <div class="container">
-                <p class="footer-text">
-                    © 2025 Sunny Singh RAJPUT. Built with passion and code.
-                </p>
             </div>
         </footer>
     </section>
 
+    <!-- macOS / Apple Style Modal Dialog for Mail Redirect -->
     <div id="email-modal" class="email-modal" aria-hidden="true">
         <div class="email-modal-backdrop" onclick="closeEmailModal()"></div>
         <div class="email-modal-content" role="dialog" aria-modal="true" aria-labelledby="email-modal-title">
-            <button class="email-modal-close" type="button" onclick="closeEmailModal()" aria-label="Close email options">
+            <button class="email-modal-close" type="button" onclick="closeEmailModal()" aria-label="Close dialog">
                 <i data-lucide="x"></i>
             </button>
 
-            <p class="email-modal-label">Contact Options</p>
-            <h3 id="email-modal-title" class="email-modal-title">Send me an email</h3>
+            <span class="modal-badge-label">Quick Contact</span>
+            <h3 id="email-modal-title" class="email-modal-title">Send a message</h3>
             <p class="email-modal-text">
-                Some browsers do not open a mail app for <code>mailto:</code>. Use any option below and you will still be able to contact me.
+                Need to quickly copy my address or route directly through webmail clients? Use the options below:
             </p>
 
-            <div class="email-modal-address">sunnyk7rajput@gmail.com</div>
+            <div class="email-modal-address-box">
+                <span class="address-text">sunnyk7rajput@gmail.com</span>
+                <button id="copy-email-btn" onclick="copyEmailAddress()" aria-label="Copy email address to clipboard"><i data-lucide="copy"></i></button>
+            </div>
+            
             <p id="email-modal-feedback" class="email-modal-feedback" aria-live="polite"></p>
 
             <div class="email-modal-actions">
-                <button id="copy-email-btn" class="btn btn-primary" type="button" onclick="copyEmailAddress()">
-                    Copy Email
-                </button>
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sunnyk7rajput@gmail.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                    Open Gmail
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sunnyk7rajput@gmail.com" target="_blank" rel="noopener noreferrer" class="btn-modal-action">
+                    <i data-lucide="mail"></i> Open Gmail
                 </a>
-                <a href="https://outlook.office.com/mail/deeplink/compose?to=sunnyk7rajput@gmail.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                    Open Outlook
+                <a href="https://outlook.office.com/mail/deeplink/compose?to=sunnyk7rajput@gmail.com" target="_blank" rel="noopener noreferrer" class="btn-modal-action">
+                    <i data-lucide="send"></i> Open Outlook
                 </a>
             </div>
         </div>
     </div>
 
+    <!-- Script imports -->
     <script src="javascript.js"></script>
     <script>
-        // Initialize Lucide icons
+        // Init Lucide Icons
         lucide.createIcons();
     </script>
 </body>

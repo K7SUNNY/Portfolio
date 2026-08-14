@@ -175,8 +175,27 @@ body.modal-open {
   color: var(--text-primary);
 }
 
-.nav-actions{
+.nav-actions {
+  display: flex;
   align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 480px) {
+  .nav-btn-resume {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+  .nav-btn-connect {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+  }
+  .nav-logo {
+    font-size: 0.95rem;
+  }
+  .nav-container {
+    padding: 0 0.75rem;
+  }
 }
 
 .nav-btn-connect {
@@ -675,8 +694,14 @@ body.modal-open {
 }
 
 .experience-sticky-info {
-  position: sticky;
-  top: 92px;
+  position: relative;
+  top: 0;
+}
+@media (min-width: 992px) {
+  .experience-sticky-info {
+    position: sticky;
+    top: 92px;
+  }
 }
 
 .experience-list {
@@ -867,6 +892,12 @@ body.modal-open {
   display: flex;
   flex-direction: column;
   transition: transform 0.6s var(--ease-apple), border-color 0.4s var(--ease-apple), opacity 0.5s var(--ease-apple);
+}
+@media (max-width: 768px) {
+  .bento-card {
+    height: auto;
+    min-height: 380px;
+  }
 }
 
 .bento-card-content {
@@ -1446,6 +1477,11 @@ body.modal-open {
 .email-modal-actions {
   display: flex;
   gap: 12px;
+}
+@media (max-width: 400px) {
+  .email-modal-actions {
+    flex-direction: column;
+  }
 }
 
 .btn-modal-action {
